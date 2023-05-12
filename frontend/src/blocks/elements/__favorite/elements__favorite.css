@@ -1,0 +1,15 @@
+.elements__favorite {
+    padding: 0;
+    margin: 5px 5px 1px 0;
+    background-image: url(../../../images/favorite-like.svg);
+    width: 22px;
+    height: 19px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+
+}
+.elements__favorite:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}

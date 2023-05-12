@@ -1,0 +1,14 @@
+.elements {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 66px;
+}
+
+@media (max-width: 1024px) {
+    .elements {
+        padding-left: 19px;
+        padding-right: 19px;
+        padding-bottom: 48px;
+    }
+}

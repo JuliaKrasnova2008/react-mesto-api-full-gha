@@ -1,0 +1,13 @@
+.elements__favorite_active {
+  margin: 5px 5px 1px 0;
+  background-image: url(../../../../images/favorite-like-active.svg);
+  width: 22px;
+  height: 19px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.elements__favorite_active:hover {
+  opacity: 0.5;
+}

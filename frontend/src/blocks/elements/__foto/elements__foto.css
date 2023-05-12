@@ -1,0 +1,15 @@
+.elements__foto {
+    min-width: 282px;
+    min-height: 282px;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    background-color: #000000;
+    color: #ffffff;
+
+}
+
+.elements__foto:hover {
+    cursor: pointer;
+}

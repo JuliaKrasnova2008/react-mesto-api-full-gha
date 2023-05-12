@@ -1,0 +1,8 @@
+.user-form {
+  margin: 0 auto;
+  width: 358px;
+  margin-bottom: 216px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}

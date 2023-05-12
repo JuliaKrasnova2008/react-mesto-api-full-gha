@@ -1,0 +1,14 @@
+.profile__title-edit {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+@media (max-width: 320px) {
+    .profile__title-edit {
+        gap: 10px;
+
+    }
+}

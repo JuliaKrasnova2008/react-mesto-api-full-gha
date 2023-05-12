@@ -1,0 +1,5 @@
+.elements__favorite-group {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}

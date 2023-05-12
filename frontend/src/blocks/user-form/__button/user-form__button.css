@@ -1,0 +1,14 @@
+.user-form__button {
+  all: unset;
+  padding: 14px 0;
+  background: #ffffff;
+  border-radius: 2px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+  width: 100%;
+  margin-top: 186px;
+  cursor: pointer;
+}
