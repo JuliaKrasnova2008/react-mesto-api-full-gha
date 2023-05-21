@@ -1,3 +1,5 @@
+import { BASE_URL } from "./data";
+
 class Auth {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
@@ -41,13 +43,15 @@ class Auth {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
     });
   }
 }
 
 export const auth = new Auth({
-  baseUrl: "https://api.krasnova.students.nomoredomains.monster",
+  baseUrl: BASE_URL,
 }
 );
+
+

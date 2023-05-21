@@ -31,15 +31,15 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isAuth) {
-    Promise.all([api.getUserInfo(), api.getAllCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (isAuth) {
+      Promise.all([api.getUserInfo(), api.getAllCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user);
+          setCards(cards);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [isAuth]);
 
@@ -49,8 +49,9 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
+          console.log(res)
           setIsAuth(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           navigate("/");
         })
         .catch((err) => {

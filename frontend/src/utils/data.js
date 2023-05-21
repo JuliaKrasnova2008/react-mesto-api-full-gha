@@ -26,18 +26,4 @@ export const initialCards = [
   },
 ];
 
-// export const cardConfig = {
-//   titleSelector: ".elements__title",
-//   imgSelector: ".elements__foto",
-//   btnLikeSelector: ".elements__favorite",
-//   btnActiveSelector: ".elements__favorite_active",
-//   btnDeleteSelector: ".elements__delete"
-// }
-
-// export const config = {
-//   inputSelector: ".form__input",
-//   submitButtonSelector: ".form__submit",
-//   submitButtonSelectorDisable: "form__submit_disable",
-//   inputErrorClass: "form__input_type_invalid",
-//   errorClass: "form__input-error_active",
-// };
+export const BASE_URL = 'https://api.krasnova.students.nomoredomains.monster';
