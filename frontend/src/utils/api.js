@@ -1,5 +1,3 @@
-import { BASE_URL } from "./data";
-
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -89,7 +87,7 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: BASE_URL,
+  baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
     "Content-Type": "application/json",

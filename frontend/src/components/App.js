@@ -31,17 +31,15 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuth) {
-      Promise.all([api.getUserInfo(), api.getAllCards()])
-        .then(([user, cards]) => {
-          setCurrentUser(user);
-          setCards(cards);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [isAuth]);
+    Promise.all([api.getUserInfo(), api.getAllCards()])
+      .then(([user, cards]) => {
+        setCurrentUser(user);
+        setCards(cards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -49,16 +47,15 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
-          console.log(res)
           setIsAuth(true);
-          setEmail(res.email);
+          setEmail(res.data.email);
           navigate("/");
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, []);
+  }, [navigate]);
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -143,7 +140,6 @@ function App() {
     if (!obj.email || !obj.password) {
       return;
     }
-
     auth
       .login(obj)
       .then((data) => {
@@ -164,13 +160,12 @@ function App() {
     if (!obj.email || !obj.password) {
       return;
     }
-
     auth
       .register(obj)
       .then((data) => {
         setErr(false);
         setInfoTooltipOpen((state) => !state);
-        navigate("/sign-in");
+        navigate("/sign-in", { replace: true });
       })
       .catch((err) => {
         setErr(true);
