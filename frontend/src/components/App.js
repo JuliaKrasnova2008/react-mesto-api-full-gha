@@ -30,16 +30,29 @@ function App() {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   Promise.all([api.getUserInfo(), api.getAllCards()])
+  //     .then(([user, cards]) => {
+  //       setCurrentUser(user);
+  //       setCards(cards);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getAllCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (isAuth) {
+      Promise.all([api.getUserInfo(), api.getAllCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user);
+          setCards(cards);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isAuth]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -47,15 +60,16 @@ function App() {
       auth
         .checkToken(token)
         .then((res) => {
+          console.log(res)
           setIsAuth(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           navigate("/");
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [navigate]);
+  }, []);
 
   function handleCardClick(card) {
     setSelectedCard(card);
