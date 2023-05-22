@@ -26,4 +26,3 @@ export const initialCards = [
   },
 ];
 
-// export const BASE_URL = 'https://api.krasnova.students.nomoredomains.monster';

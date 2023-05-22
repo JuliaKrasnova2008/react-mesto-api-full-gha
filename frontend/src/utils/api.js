@@ -1,7 +1,7 @@
 class Api {
-  constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+  constructor({ baseUrl, headers }) {
+    this._headers = headers;
+    this._baseUrl = baseUrl;
   }
   //функция, которая обрабатывает ответ от сервера
   _handleResponse(response) {
