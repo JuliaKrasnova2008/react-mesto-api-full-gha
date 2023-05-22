@@ -1,44 +1,41 @@
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
+export default function Card({ obj, onCardClick, onCardLike, onCardDelete }) {
   const { currentUser } = useContext(CurrentUserContext);
 
-  const isOwn = card.owner === currentUser._id;
-  const isLiked = card.likes.some((i) => i === currentUser._id);
-  const cardLikeBtnClassName = `elements__favorite${isLiked ? "_active" : ""} btn`;
+  const isOwn = obj.owner === currentUser._id;
+  const isLiked = obj.likes.some((i) => i === currentUser._id);
+  const cardLikesBtnClassName = `elements__favorite${isLiked ? "_active" : ""
+    } btn`;
 
   return (
     <li className="elements__card">
-      {isOwn && (
-        <button
-          className="elements__delete"
-          type="button"
-          aria-label="Удалить"
-          onClick={() => onCardDelete(card)}
-        ></button>
-      )}
-
       <img
         className="elements__foto"
-        onClick={() => {
-          onCardClick(card);
-        }}
-        src={card.link}
-        alt={card.name}
+        src={obj.link}
+        alt={obj.name}
+        onClick={() => onCardClick(obj)}
       />
       <div className="elements__item">
-        <h2 className="elements__title">{card.name}</h2>
+        <p className="elements__title">{obj.name}</p>
         <div className="elements__favorite-group">
           <button
-            className={cardLikeBtnClassName}
             type="button"
-            aria-label="Нравится"
-            onClick={() => onCardLike(card)}
+            className={cardLikesBtnClassName}
+            aria-label="Сердечко"
+            onClick={() => onCardLike(obj)}
           ></button>
-          <span className="elements__favorite-num">{card.likes.length}</span>
+          <p className="elements__favorite-num">{obj.likes.length}</p>
         </div>
       </div>
+      {isOwn && (
+        <button
+          type="button"
+          className="elements__delete btn"
+          onClick={() => onCardDelete(obj)}
+        ></button>
+      )}
     </li>
   );
 }

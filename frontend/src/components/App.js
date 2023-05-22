@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import AddPlacePopup from "./AddPlacePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import EditProfilePopup from "./EditProfilePopup";
 import Footer from "./Footer";
 import Header from "./Header";
 import ImagePopup from "./ImagePopup";
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import api from "../utils/api";
-import Login from "./Login";
-import Register from "./Register";
-import InfoTooltip from "./InfoTooltip";
+import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
+import { Api } from "../utils/api"
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { auth } from "../utils/auth";
+import Register from "./Register";
+import Login from "./Login";
+import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -27,19 +27,15 @@ function App() {
   const [err, setErr] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [email, setEmail] = useState("");
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   Promise.all([api.getUserInfo(), api.getAllCards()])
-  //     .then(([user, cards]) => {
-  //       setCurrentUser(user);
-  //       setCards(cards);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  const api = new Api({
+    baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      "Content-Type": "application/json",
+    },
+  });
 
   useEffect(() => {
     if (isAuth) {
@@ -49,7 +45,6 @@ function App() {
           setCards(cards.reverse());
         })
         .catch((error) => {
-          console.log(error);
         });
     }
   }, [isAuth]);
@@ -100,7 +95,9 @@ function App() {
           state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleCardDelete(card) {

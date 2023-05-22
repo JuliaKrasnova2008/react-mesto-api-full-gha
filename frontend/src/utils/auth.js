@@ -1,4 +1,4 @@
-class Auth {
+class Api {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
   }
@@ -48,9 +48,15 @@ class Auth {
   }
 }
 
-export const auth = new Auth({
+const apiConfig = {
   baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
-}
-);
+};
+export const auth = new Api(apiConfig);
+
+
+// export const auth = new Auth({
+//   baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
+// }
+// );
 
 

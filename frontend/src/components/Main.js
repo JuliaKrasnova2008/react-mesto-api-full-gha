@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
 
@@ -50,7 +50,7 @@ export default function Main({
         <ul className="elements__list">
           {cards.map((obj) => (
             <Card
-              card={obj}
+              obj={obj}
               key={obj._id}
               onCardLike={onCardLike}
               onCardClick={onCardClick}

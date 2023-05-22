@@ -86,13 +86,14 @@ class Api {
     });
   }
 }
-const api = new Api({
-  baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-    "Content-Type": "application/json",
-  },
-});
+// const apiConfig = new Api({
+//   baseUrl: 'https://api.krasnova.students.nomoredomains.monster',
+//   headers: {
+//     Authorization: `Bearer ${localStorage.getItem('token')}`,
+//     "Content-Type": "application/json",
+//   },
+// });
 
 
-export default api;
+// export default api;
+export { Api }
